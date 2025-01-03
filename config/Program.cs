@@ -23,9 +23,8 @@ namespace config
             }
 
             app.UseHttpsRedirection();
-
+           
             app.UseAuthorization();
-
 
             app.MapControllers();
 

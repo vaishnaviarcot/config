@@ -8,8 +8,6 @@ namespace Accounts.Controllers
     public class AccountsController : ControllerBase
     {
         private static Stack<string> _stack = new Stack<string>();
-
-        
         [HttpGet]
         public IActionResult Peek()
         {
@@ -20,7 +18,6 @@ namespace Accounts.Controllers
 
             return Ok(new { Top = _stack.Peek(), Count = _stack.Count });
         }
-
         [HttpPost]
         public IActionResult Push([FromBody] string value)
         {
@@ -28,7 +25,6 @@ namespace Accounts.Controllers
             {
                 return BadRequest(new { Message = "Value cannot be null or empty." });
             }
-
             _stack.Push(value);
             return Ok(new { Message = "Item pushed successfully.", Stack = _stack });
         }
@@ -39,7 +35,6 @@ namespace Accounts.Controllers
             {
                 return NotFound(new { Message = "Stack is empty. Cannot pop an item." });
             }
-
             string poppedItem = _stack.Pop();
             return Ok(new { Message = "Item popped successfully.", PoppedItem = poppedItem, RemainingStack = _stack });
         }
