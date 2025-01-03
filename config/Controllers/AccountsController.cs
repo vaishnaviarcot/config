@@ -12,11 +12,12 @@ namespace Accounts.Controllers
         public IActionResult Peek()
         {
             if (_stack.Count == 0)
-            {
-                return NotFound(new { Message = "Stack is empty." });
-            }
-
+                return NewMethod();
             return Ok(new { Top = _stack.Peek(), Count = _stack.Count });
+        }
+        private IActionResult NewMethod()
+        {
+            return NotFound(new { Message = "Stack is empty." });
         }
         [HttpPost]
         public IActionResult Push([FromBody] string value)
@@ -40,3 +41,5 @@ namespace Accounts.Controllers
         }
     }
 }
+
+
